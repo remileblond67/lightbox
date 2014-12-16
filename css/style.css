@@ -3,55 +3,46 @@
     -moz-box-sizing: border-box;
     box-sizing: border-box;
 }
-
-h1, h2 {
+h1,
+h2 {
     font-family: Helvetica, sans-serif;
     color: rgb(109, 109, 109);
 }
-
 h1 {
     color: #6D6D6D;
     margin-top: 0;
 }
-
 body {
-    margin:0;
-    font-family:"DDG_ProximaNova",
-    "Proxima Nova",
-    "Helvetica Neue",
-    "Helvetica",
-    "Segoe UI",
-    "Nimbus Sans L",
-    "Liberation Sans",
-    "Open Sans",
-    FreeSans,
-    Arial,
-    sans-serif;
-    font-size:12px;
-    background:none repeat scroll 0px 0px #F1F1F1;
-    color:#444;
+    margin: 0;
+    font-family: "DDG_ProximaNova", "Proxima Nova", "Helvetica Neue", "Helvetica", "Segoe UI", "Nimbus Sans L", "Liberation Sans", "Open Sans", FreeSans, Arial, sans-serif;
+    font-size: 12px;
+    background: none repeat scroll 0px 0px #F1F1F1;
+    color: #444;
 }
-
 body>div {
     background-color: white;
 }
-
 header {
     background-color: white;
     width: 100%;
     margin: 0;
-    height: 100px;
+    height: 85px;
     -webkit-box-shadow: 5px 0 10px grey;
     box-shadow: 5px 0 10px grey;
     padding: 5px;
+    position: fixed;
+    z-index: 10;
 }
-
 /*Mise en forme du logo*/
+
 header > a > img {
     float: left;
-    padding: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
 }
-
+main {
+    padding-top: 85px;
+}
 footer {
     text-align: center;
     background-color: lightgrey;
@@ -64,7 +55,6 @@ footer {
     color: white;
     opacity: 0.7;
 }
-
 nav {
     float: right;
     position: fixed;
@@ -77,7 +67,6 @@ nav {
     -webkit-box-shadow: 2px 1px 5px grey;
     box-shadow: 2px 1px 5px grey;
 }
-
 ul.lightBox {
     list-style-type: none;
     width: 100%;
@@ -103,32 +92,27 @@ ul.lightBox {
     -ms-flex-align: center;
     align-items: center;
 }
-
 ul.lightBox li {
     position: relative;
     overflow: hidden;
     -webkit-box-shadow: 3px 3px 5px grey;
     box-shadow: 3px 3px 5px grey;
 }
-
 ul.lightBox img {
     top: 0;
     left: 0;
     position: relative;
-    top:0;
+    top: 0;
     left: 0;
     max-width: 100%;
     max-height: 100%;
 }
-
 .lightBox > li {
     margin: 10px;
 }
-
 h2 {
     font-size: 0.9em;
 }
-
 .titreImage {
     position: absolute;
     padding: 4px;
@@ -150,12 +134,10 @@ li:hover .titreImage {
     opacity: 0.75;
     top: 0;
 }
-
 .titreImage > a {
     text-decoration: none;
     color: white;
 }
-
 .auteurImage {
     position: absolute;
     right: 0;
@@ -169,8 +151,8 @@ li:hover .titreImage {
     border-radius: 4px 0 0 4px;
     text-align: center;
     font-size: 0.8em;
-    -webkit-transition-property: opacity,bottom;
-    transition-property: opacity,bottom;
+    -webkit-transition-property: opacity, bottom;
+    transition-property: opacity, bottom;
     -webkit-transition-delay: 0.3s;
     transition-delay: 0.3s;
     -webkit-transition-duration: 0.7s;
@@ -183,7 +165,6 @@ li:hover .auteurImage {
     opacity: 0.6;
     bottom: 2em;
 }
-
 .noteImage {
     position: absolute;
     left: 0;
@@ -192,7 +173,7 @@ li:hover .auteurImage {
     font-size: 0.6em;
     padding: 2px;
     color: white;
-    border-radius: 0 3px 0 0 ;
+    border-radius: 0 3px 0 0;
     opacity: 0;
     -webkit-transition-property: opacity;
     transition-property: opacity;
@@ -204,7 +185,6 @@ li:hover .auteurImage {
 li:hover .noteImage {
     opacity: 0.75;
 }
-
 .nbComment {
     position: absolute;
     bottom: 0.5em;
@@ -213,7 +193,7 @@ li:hover .noteImage {
     background: grey;
     color: white;
     text-align: center;
-    border-radius: 0 3px 0 0 ;
+    border-radius: 0 3px 0 0;
     padding: 2px;
     opacity: 0;
     -webkit-transition-property: opacity;
@@ -223,11 +203,9 @@ li:hover .noteImage {
     -webkit-transition-duration: 0.7s;
     transition-duration: 0.7s;
 }
-
- li:hover .nbComment {
-     opacity: 0.75;
- }
-
+li:hover .nbComment {
+    opacity: 0.75;
+}
 .btnClose {
     display: block;
     position: absolute;
@@ -243,52 +221,40 @@ li:hover .noteImage {
 .casePhoto:hover .btnClose {
     opacity: 0.75;
 }
-
 .btnClose:hover {
-    -webkit-transform:rotate(90deg);
-    -ms-transform:rotate(90deg);
-    transform:rotate(90deg);
+    -webkit-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    transform: rotate(90deg);
 }
-
 .titre {
     font-weight: 800;
 }
-
-
-
 .casePhoto:hover {
     z-index: 20;
 }
-
 .chargement {
-    width: 100%
-    height: 100%;
+    width: 100% height: 100%;
     font-size: 4em;
     text-align: center;
     -webkit-animation: bounce 0.5s ease infinite alternate;
     animation: bounce 0.5s ease infinite alternate;
 }
-
 @-webkit-keyframes bounce {
     from {
         opacity: 100%;
     }
-
     to {
         opacity: 0;
     }
 }
-
 @keyframes bounce {
     from {
         opacity: 100%;
     }
-
     to {
         opacity: 0;
     }
 }
-
 summary {
     font-size: 1.2em;
     color: "#FF0000";

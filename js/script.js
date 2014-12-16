@@ -9,14 +9,23 @@ lightboxApp.controller('lightBox', function ($scope, $http, $filter) {
     $scope.ordreTri = "-created";
     $scope.revTri = false;
     $scope.lstOK = false;
-    $scope.lstTemplate =  [
-        {name: 'Vignettes', url: 'templates/vignettePhoto.html'},
-        {name: 'Petites vignettes', url: 'templates/petiteVignettePhoto.html'},
-        {name: 'Toute petites vignettes', url: 'templates/tresPetiteVignettePhoto.html'}
+    $scope.lstTemplate = [
+        {
+            name: 'Vignettes',
+            url: 'templates/vignettePhoto.html'
+        },
+        {
+            name: 'Petites vignettes',
+            url: 'templates/petiteVignettePhoto.html'
+        },
+        {
+            name: 'Toute petites vignettes',
+            url: 'templates/tresPetiteVignettePhoto.html'
+        }
     ];
     $scope.nbMaxPhoto = 50;
     $scope.curTemplate = $scope.lstTemplate[0].url;
-    
+
     $scope.visuImage = function (photo) {
         $scope.grandePhoto.url = photo.field_image_1;
         $scope.grandePhoto.titre = photo.title;
@@ -44,10 +53,12 @@ lightboxApp.controller('lightBox', function ($scope, $http, $filter) {
             return sum;
         }, []);
         for (auteur in tmpLstAuteur.sort()) {
-            newAuteur = {"name" : tmpLstAuteur[auteur]};
+            newAuteur = {
+                "name": tmpLstAuteur[auteur]
+            };
             $scope.lstAuteur.push(newAuteur);
         }
-        
+
         // Récupération des différentes notes
         tmpLstNote = $scope.lstPhoto.reduce(function (sum, photo) {
             if (sum.indexOf(photo.field_vote) < 0) {
@@ -62,20 +73,20 @@ lightboxApp.controller('lightBox', function ($scope, $http, $filter) {
             };
             $scope.lstNote.push(newNote);
         }
-        
-//        // Récupération des différents nombres de commentaires
-//        tmpLstNbComment = $scope.lstPhoto.reduce(function (sum, photo) {
-//            if (sum.indexOf(photo.comment_count) < 0) {
-//                sum.push(photo.comment_count);
-//            }
-//            return sum;
-//        }, []);
-//        for (nb in tmpLstNbComment.sort()) {
-//            newNb = {
-//                "nb_comment": tmpLstNbComment[nb]
-//            };
-//            $scope.lstNbComment.push(newNb);
-//        }
+
+        //        // Récupération des différents nombres de commentaires
+        //        tmpLstNbComment = $scope.lstPhoto.reduce(function (sum, photo) {
+        //            if (sum.indexOf(photo.comment_count) < 0) {
+        //                sum.push(photo.comment_count);
+        //            }
+        //            return sum;
+        //        }, []);
+        //        for (nb in tmpLstNbComment.sort()) {
+        //            newNb = {
+        //                "nb_comment": tmpLstNbComment[nb]
+        //            };
+        //            $scope.lstNbComment.push(newNb);
+        //        }
 
         $scope.lstOK = true;
     });
