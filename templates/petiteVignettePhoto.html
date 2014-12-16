@@ -1,0 +1,9 @@
+<img ng-click="photo.url = photo.field_image_1; photo.grand = true" ng-src="{{photo.url}}" width="100px">
+<div class="titreImage">
+    <a href="http://imagora-photo.fr/node/{{photo.nid}}" title="Voir la fiche de l'image">{{photo.title}}</a>
+</div>
+<div class="auteurImage">{{photo.name}}</div>
+<a class="btnClose" href="" ng-show="photo.grand" ng-click="photo.url = photo.field_image;
+                           photo.grand = false">
+    <img src="img/bouton_fermer.png" alt="Fermer">
+</a>

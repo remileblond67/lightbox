@@ -1,0 +1,87 @@
+<!doctype html>
+<html ng-app="lightBox" lang="fr">
+
+<head>
+    <meta charset="utf-8">
+    <script src="js/angular-1.0.0rc10.min.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/script.js"></script>
+    <meta name="viewport" content="width=device-width" />
+</head>
+
+<body ng-controller="lightBox">
+    <header>
+        <a href="http://imagora-photo.fr" title="Retour au site ImAGORA-Photo">
+            <img src="http://imagora-photo.fr/sites/default/files/logo_2_0.png" alt="Logo ImAGORA-Photo">
+        </a>
+        <h1>Visualisation avancée de la galerie photos</h1>
+        <h2>Cliquer sur le titre des photos pour accéder à la page de commentaire</h2>
+    </header>
+    <main>
+        <nav>
+            <div>
+                <details class="filtre">
+                    <summary>Filtre :</summary>
+                    <label for="title">Titre :</label>
+                    <input name="title" ng-model="filtre.title"></input>
+                    <label for="description">Description :</label>
+                    <input name="description" type="text" ng-model="filtre.field_desc_photo">
+                    <label for="auteur">Auteur :</label>
+                    <select name="auteur" ng-model="filtre.name">
+                        <option value="" selected>Tous</option>
+                        <option ng-repeat="auteur in lstAuteur">{{auteur.name}}</option>
+                    </select>
+                    <label for="note">Note :</label>
+                    <select name="note" ng-model="filtre.field_vote">
+                        <option value="" selected>Toutes</option>
+                        <option ng-repeat="note in lstNote" value="{{note.note}}">{{note.lib}}</option>
+                    </select>
+                    <label for="nbComment">Nb commentaire :</label>
+                    <select name="nbComment" ng-model="filtre.comment_count">
+                        <option ng-repeat="nb in lstNbComment" value={nb.nb_comment}></option>
+                    </select>
+                </details>
+            </div>
+            <div>
+                <details>
+                    <summary>Tri :</summary>
+                    <a href="" ng-click="ordreTri = '-created'; revTri=!revTri">Par date</a>
+                    <a href="" ng-click="ordreTri = '-field_vote'; revTri=!revTri">Par note</a>
+                    <a href="" ng-click="ordreTri = '-comment_count'; revTri=!revTri">Par nombre de commentaire</a>
+                </details>
+            </div>
+            <div>
+                <details>
+                    <summary>Affichage :</summary>
+                    <label for="templateImage">Thème :</label>
+                    <select name="templateImage" ng-model="curTemplate">
+                        <option ng-repeat="template in lstTemplate" value="{{template.url}}">
+                            {{template.name}}
+                        </option>
+                    </select>
+                    <label for="nbPhoto">Nombre photo :</label>
+                    <select name="nbPhoto" ng-model="nbMaxPhoto">
+                        <option value="10">10</option>
+                        <option value="50">50</option>
+                        <option value="100">100</option>
+                        <option value="200">200</option>
+                        <option value="1000">1000</option>
+                    </select> sur {{lstPhoto.length}}
+                </details>
+            </div>
+        </nav>
+        <div ng-hide="lstOK" class="chargement">Chargement de la liste des images en cours...</div>
+
+        <div ng-show="lstOK">
+            <ul class="lightBox">
+                <li class="casePhoto" ng-repeat="photo in lstPhoto | filter:filtre | orderBy:ordreTri:revTri | limitTo:nbMaxPhoto" data-ng-include="curTemplate">
+                </li>
+            </ul>
+        </div>
+    </main>
+    <footer>
+        {{lstPhoto.length}} photo<span ng-if='{{lstPhoto.length > 1}}'>s</span> au total
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,15 @@
+
+<p>
+
+    <a href="http://imagora-photo.fr/node/{{photo.nid}}" title="Voir la fiche de l'image">{{photo.title}}</a>
+
+</p>
+<p>
+    Auteur : {{photo.name}}</div>
+</p>
+<p ng-show='photo.field_vote != "0/5"'>
+    Note : {{photo.field_vote}}
+</p>
+<p ng-show="photo.comment_count != '0'">
+    {{photo.comment_count.replace("0", "")}} commentaire(s)
+</p>
